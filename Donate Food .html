@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Donate Food</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-image: url('food4.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+
+    /* Navigation Bar */
+    nav {
+            background-color:#2c8b4c;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .form-box select,
+    .form-box input {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .form-box button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+      background-color: #2c8b4c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .form-box button:hover {
+      background-color:#2c8b4c;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="login.html">LOGIN/REGISTER</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </nav>
+
+  <!-- Donation Form -->
+  <div class="container">
+    <h1>Donate Food</h1>
+    <div class="form-box">
+      <select required>
+        <option value="" disabled selected>Select Food Type</option>
+        <option>Dry food</option>
+        <option>Snacks</option>
+        <option>Drinks</option>
+        <option>Fruits & Vegetables</option>
+      </select>
+<!-- Quantity Field with Unit Selector -->
+<div style="display: flex; gap: 10px;">
+  <input type="number" id="quantity" placeholder="Quantity" required style="flex: 2;">
+  <select id="unit" required style="flex: 1;">
+    <option value="" disabled selected>Unit</option>
+    <option>kg</option>
+    <option>liters</option>
+    <option>packets</option>
+    <option>pieces</option>
+  </select>
+</div>
+
+      
+      <input type="date" placeholder="Expiration Date" required>
+      <button> <a href="Schedule Pickup.html">sudmit</a></button>
+    </div>
+  </div>
+<script>
+  function submitDonation() {
+    const foodType = document.getElementById("foodType").value;
+    const quantity = document.getElementById("quantity").value;
+    const unit = document.getElementById("unit").value;
+    const expiry = document.getElementById("expiry").value;
+
+    if (!foodType || !quantity || !unit || !expiry) {
+      alert("Please fill all fields.");
+      return;
+    }
+
+    const donation = {
+      foodType,
+      quantity: `${quantity} ${unit}`,
+      expiry
+    };
+
+    localStorage.setItem("donationData", JSON.stringify(donation));
+    window.location.href ="donation.html";
+  }
+</script>
+
+
+</body>
+</html>
